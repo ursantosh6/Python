@@ -1,0 +1,16 @@
+import json,sys
+
+
+with open("C:\\tmp\\jackson.json") as json_file:
+    json_parsed = json.load(json_file)
+
+sys.stdout = open("C:\\tmp\\jackson.csv" , 'w')
+
+for key, value in json_parsed.items():
+    if isinstance(value,dict):
+        print(key , end=",")
+        for k, v in value.items():
+            if not k is list(value.keys())[-1]:
+                 print(v,end=",")
+            else:
+                print(v)
